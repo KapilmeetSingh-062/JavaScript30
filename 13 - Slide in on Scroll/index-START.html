@@ -244,17 +244,21 @@
     const sliderImages = document.querySelectorAll(".slide-in");
 
     function checkSlide(e) {
+      console.count(e)
       sliderImages.forEach((sliderImage) => {
         // Calculate the half length of the image
+        const windowTop = window.scrollY;
+        const windowBottom = windowTop + window.innerHeight;
         const slideInAt =
-          (window.scrollY + window.innerHeight) - sliderImage.height / 2;
+          (windowBottom) - sliderImage.height / 2;
 
         // Calculate the bottom of the image
-        const imageBottom = sliderImage.offsetTop + sliderImage.height;
+        const imageTop = sliderImage.offsetTop;
+        const imageBottom = imageTop + sliderImage.height;
 
         // Variable for using in if statement
-        const isHalfShown = slideInAt > sliderImage.offsetTop;
-        const isNotScrolledPast = window.scrollY < imageBottom;
+        const isHalfShown = slideInAt > imageTop;
+        const isNotScrolledPast = windowTop < imageBottom;
 
         if (isHalfShown && isNotScrolledPast) {
           sliderImage.classList.add('active')
