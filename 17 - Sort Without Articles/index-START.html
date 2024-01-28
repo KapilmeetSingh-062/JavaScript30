@@ -61,6 +61,10 @@
         "An Old Dog",
       ];
 
+      function strip(bandName) {
+        return bandName.replace(/^(a |the |an )/i, "").trim();
+      }
+
       const bandsSorted = bands.sort((a, b) => a.localeCompare(b));
       console.log(bandsSorted);
     </script>
