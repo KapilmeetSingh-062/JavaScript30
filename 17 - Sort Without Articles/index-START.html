@@ -65,7 +65,9 @@
         return bandName.replace(/^(a |the |an )/i, "").trim();
       }
 
-      const bandsSorted = bands.sort((a, b) => a.localeCompare(b));
+      const bandsSorted = bands.sort((a, b) =>
+        strip(a).localeCompare(strip(b))
+      );
       console.log(bandsSorted);
     </script>
   </body>
