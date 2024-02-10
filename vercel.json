@@ -1,4 +1,3 @@
 {
-    "version": 2,
     "builds": [{ "src": "/*/index-start.html", "use": "@vercel/static" }]
   }
