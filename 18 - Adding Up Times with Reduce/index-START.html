@@ -70,25 +70,32 @@
     <script>
       const timeNodes = Array.from(document.querySelectorAll("[data-time]"));
 
-      const seconds = timeNodes.map((node) => node.dataset.time)
+      /* const seconds = timeNodes.map((node) => node.dataset.time)
       .map(timeCode => {
         const [mins, secs] = timeCode.split(':').map(parseFloat)
         return (mins * 60) + secs;
       })
-      .reduce((total, vidSeconds) => total + vidSeconds)
+      .reduce((total, vidSeconds) => total + vidSeconds) 
+      */
 
-      <!-- console.log(seconds); -->
+      const seconds = timeNodes.reduce((total, vidSeconds) => {
+        const [min, secs] = vidSeconds.dataset.time.split(":");
+        return total + mins * 60 + secs;
+      }, 0);
 
-      let secondsLeft = seconds
+      // console.log(seconds);
+
+      let secondsLeft = seconds;
 
       const hours = Math.floor(secondsLeft / 3600);
       secondsLeft = secondsLeft % 3600;
 
-      const minutes = Math.floor(secondsLeft / 60)
-      secondsLeft = secondsLeft % 60
+      const minutes = Math.floor(secondsLeft / 60);
+      secondsLeft = secondsLeft % 60;
 
-      console.log(`Total hours: ${hours},\nTotal minutes: ${minutes},\nTotal Seconds: ${secondsLeft}`)
-
+      console.log(
+        `Total hours: ${hours},\nTotal minutes: ${minutes},\nTotal Seconds: ${secondsLeft}`
+      );
     </script>
   </body>
 </html>
